@@ -12,8 +12,8 @@ class BookmarkCmd {
   Future<void> upsertBookmark(String caption, String url) async {
     final bookmark = await BookmarkService().upsertBookmark(caption, url);
     print('[INFO] ブックマークを登録しました');
-    print(bookmark?.caption);
-    print(bookmark?.url);
+    print(bookmark.caption);
+    print(bookmark.url);
   }
 
   Future<void> deleteBookmark(String url) async {

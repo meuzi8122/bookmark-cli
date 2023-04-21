@@ -10,7 +10,6 @@ import 'package:orm/orm.dart' show DateTimeJsonConverter;
 part 'prisma_client.g.dart';
 
 enum BookmarkScalarFieldEnum implements _i1.PrismaEnum {
-  id,
   caption,
   url;
 
@@ -43,7 +42,6 @@ class BookmarkWhereInput implements _i1.JsonSerializable {
     this.AND,
     this.OR,
     this.NOT,
-    this.id,
     this.caption,
     this.url,
   });
@@ -57,8 +55,6 @@ class BookmarkWhereInput implements _i1.JsonSerializable {
 
   final Iterable<BookmarkWhereInput>? NOT;
 
-  final IntFilter? id;
-
   final StringFilter? caption;
 
   final StringFilter? url;
@@ -70,7 +66,6 @@ class BookmarkWhereInput implements _i1.JsonSerializable {
 @_i1.jsonSerializable
 class BookmarkOrderByWithRelationInput implements _i1.JsonSerializable {
   const BookmarkOrderByWithRelationInput({
-    this.id,
     this.caption,
     this.url,
   });
@@ -78,8 +73,6 @@ class BookmarkOrderByWithRelationInput implements _i1.JsonSerializable {
   factory BookmarkOrderByWithRelationInput.fromJson(
           Map<String, dynamic> json) =>
       _$BookmarkOrderByWithRelationInputFromJson(json);
-
-  final SortOrder? id;
 
   final SortOrder? caption;
 
@@ -92,15 +85,10 @@ class BookmarkOrderByWithRelationInput implements _i1.JsonSerializable {
 
 @_i1.jsonSerializable
 class BookmarkWhereUniqueInput implements _i1.JsonSerializable {
-  const BookmarkWhereUniqueInput({
-    this.id,
-    this.url,
-  });
+  const BookmarkWhereUniqueInput({this.url});
 
   factory BookmarkWhereUniqueInput.fromJson(Map<String, dynamic> json) =>
       _$BookmarkWhereUniqueInputFromJson(json);
-
-  final int? id;
 
   final String? url;
 
@@ -111,21 +99,16 @@ class BookmarkWhereUniqueInput implements _i1.JsonSerializable {
 @_i1.jsonSerializable
 class BookmarkOrderByWithAggregationInput implements _i1.JsonSerializable {
   const BookmarkOrderByWithAggregationInput({
-    this.id,
     this.caption,
     this.url,
     this.$count,
-    this.$avg,
     this.$max,
     this.$min,
-    this.$sum,
   });
 
   factory BookmarkOrderByWithAggregationInput.fromJson(
           Map<String, dynamic> json) =>
       _$BookmarkOrderByWithAggregationInputFromJson(json);
-
-  final SortOrder? id;
 
   final SortOrder? caption;
 
@@ -134,17 +117,11 @@ class BookmarkOrderByWithAggregationInput implements _i1.JsonSerializable {
   @JsonKey(name: r'_count')
   final BookmarkCountOrderByAggregateInput? $count;
 
-  @JsonKey(name: r'_avg')
-  final BookmarkAvgOrderByAggregateInput? $avg;
-
   @JsonKey(name: r'_max')
   final BookmarkMaxOrderByAggregateInput? $max;
 
   @JsonKey(name: r'_min')
   final BookmarkMinOrderByAggregateInput? $min;
-
-  @JsonKey(name: r'_sum')
-  final BookmarkSumOrderByAggregateInput? $sum;
 
   @override
   Map<String, dynamic> toJson() =>
@@ -157,7 +134,6 @@ class BookmarkScalarWhereWithAggregatesInput implements _i1.JsonSerializable {
     this.AND,
     this.OR,
     this.NOT,
-    this.id,
     this.caption,
     this.url,
   });
@@ -171,8 +147,6 @@ class BookmarkScalarWhereWithAggregatesInput implements _i1.JsonSerializable {
   final Iterable<BookmarkScalarWhereWithAggregatesInput>? OR;
 
   final Iterable<BookmarkScalarWhereWithAggregatesInput>? NOT;
-
-  final IntWithAggregatesFilter? id;
 
   final StringWithAggregatesFilter? caption;
 
@@ -204,15 +178,12 @@ class BookmarkCreateInput implements _i1.JsonSerializable {
 @_i1.jsonSerializable
 class BookmarkUncheckedCreateInput implements _i1.JsonSerializable {
   const BookmarkUncheckedCreateInput({
-    this.id,
     required this.caption,
     required this.url,
   });
 
   factory BookmarkUncheckedCreateInput.fromJson(Map<String, dynamic> json) =>
       _$BookmarkUncheckedCreateInputFromJson(json);
-
-  final int? id;
 
   final String caption;
 
@@ -243,15 +214,12 @@ class BookmarkUpdateInput implements _i1.JsonSerializable {
 @_i1.jsonSerializable
 class BookmarkUncheckedUpdateInput implements _i1.JsonSerializable {
   const BookmarkUncheckedUpdateInput({
-    this.id,
     this.caption,
     this.url,
   });
 
   factory BookmarkUncheckedUpdateInput.fromJson(Map<String, dynamic> json) =>
       _$BookmarkUncheckedUpdateInputFromJson(json);
-
-  final IntFieldUpdateOperationsInput? id;
 
   final StringFieldUpdateOperationsInput? caption;
 
@@ -264,15 +232,12 @@ class BookmarkUncheckedUpdateInput implements _i1.JsonSerializable {
 @_i1.jsonSerializable
 class BookmarkCreateManyInput implements _i1.JsonSerializable {
   const BookmarkCreateManyInput({
-    this.id,
     required this.caption,
     required this.url,
   });
 
   factory BookmarkCreateManyInput.fromJson(Map<String, dynamic> json) =>
       _$BookmarkCreateManyInputFromJson(json);
-
-  final int? id;
 
   final String caption;
 
@@ -304,7 +269,6 @@ class BookmarkUpdateManyMutationInput implements _i1.JsonSerializable {
 @_i1.jsonSerializable
 class BookmarkUncheckedUpdateManyInput implements _i1.JsonSerializable {
   const BookmarkUncheckedUpdateManyInput({
-    this.id,
     this.caption,
     this.url,
   });
@@ -313,8 +277,6 @@ class BookmarkUncheckedUpdateManyInput implements _i1.JsonSerializable {
           Map<String, dynamic> json) =>
       _$BookmarkUncheckedUpdateManyInputFromJson(json);
 
-  final IntFieldUpdateOperationsInput? id;
-
   final StringFieldUpdateOperationsInput? caption;
 
   final StringFieldUpdateOperationsInput? url;
@@ -322,43 +284,6 @@ class BookmarkUncheckedUpdateManyInput implements _i1.JsonSerializable {
   @override
   Map<String, dynamic> toJson() =>
       _$BookmarkUncheckedUpdateManyInputToJson(this);
-}
-
-@_i1.jsonSerializable
-class IntFilter implements _i1.JsonSerializable {
-  const IntFilter({
-    this.equals,
-    this.$in,
-    this.notIn,
-    this.lt,
-    this.lte,
-    this.gt,
-    this.gte,
-    this.not,
-  });
-
-  factory IntFilter.fromJson(Map<String, dynamic> json) =>
-      _$IntFilterFromJson(json);
-
-  final int? equals;
-
-  @JsonKey(name: r'in')
-  final Iterable<int>? $in;
-
-  final Iterable<int>? notIn;
-
-  final int? lt;
-
-  final int? lte;
-
-  final int? gt;
-
-  final int? gte;
-
-  final NestedIntFilter? not;
-
-  @override
-  Map<String, dynamic> toJson() => _$IntFilterToJson(this);
 }
 
 @_i1.jsonSerializable
@@ -413,7 +338,6 @@ class StringFilter implements _i1.JsonSerializable {
 @_i1.jsonSerializable
 class BookmarkCountOrderByAggregateInput implements _i1.JsonSerializable {
   const BookmarkCountOrderByAggregateInput({
-    this.id,
     this.caption,
     this.url,
   });
@@ -421,8 +345,6 @@ class BookmarkCountOrderByAggregateInput implements _i1.JsonSerializable {
   factory BookmarkCountOrderByAggregateInput.fromJson(
           Map<String, dynamic> json) =>
       _$BookmarkCountOrderByAggregateInputFromJson(json);
-
-  final SortOrder? id;
 
   final SortOrder? caption;
 
@@ -434,24 +356,8 @@ class BookmarkCountOrderByAggregateInput implements _i1.JsonSerializable {
 }
 
 @_i1.jsonSerializable
-class BookmarkAvgOrderByAggregateInput implements _i1.JsonSerializable {
-  const BookmarkAvgOrderByAggregateInput({this.id});
-
-  factory BookmarkAvgOrderByAggregateInput.fromJson(
-          Map<String, dynamic> json) =>
-      _$BookmarkAvgOrderByAggregateInputFromJson(json);
-
-  final SortOrder? id;
-
-  @override
-  Map<String, dynamic> toJson() =>
-      _$BookmarkAvgOrderByAggregateInputToJson(this);
-}
-
-@_i1.jsonSerializable
 class BookmarkMaxOrderByAggregateInput implements _i1.JsonSerializable {
   const BookmarkMaxOrderByAggregateInput({
-    this.id,
     this.caption,
     this.url,
   });
@@ -459,8 +365,6 @@ class BookmarkMaxOrderByAggregateInput implements _i1.JsonSerializable {
   factory BookmarkMaxOrderByAggregateInput.fromJson(
           Map<String, dynamic> json) =>
       _$BookmarkMaxOrderByAggregateInputFromJson(json);
-
-  final SortOrder? id;
 
   final SortOrder? caption;
 
@@ -474,7 +378,6 @@ class BookmarkMaxOrderByAggregateInput implements _i1.JsonSerializable {
 @_i1.jsonSerializable
 class BookmarkMinOrderByAggregateInput implements _i1.JsonSerializable {
   const BookmarkMinOrderByAggregateInput({
-    this.id,
     this.caption,
     this.url,
   });
@@ -483,8 +386,6 @@ class BookmarkMinOrderByAggregateInput implements _i1.JsonSerializable {
           Map<String, dynamic> json) =>
       _$BookmarkMinOrderByAggregateInputFromJson(json);
 
-  final SortOrder? id;
-
   final SortOrder? caption;
 
   final SortOrder? url;
@@ -492,78 +393,6 @@ class BookmarkMinOrderByAggregateInput implements _i1.JsonSerializable {
   @override
   Map<String, dynamic> toJson() =>
       _$BookmarkMinOrderByAggregateInputToJson(this);
-}
-
-@_i1.jsonSerializable
-class BookmarkSumOrderByAggregateInput implements _i1.JsonSerializable {
-  const BookmarkSumOrderByAggregateInput({this.id});
-
-  factory BookmarkSumOrderByAggregateInput.fromJson(
-          Map<String, dynamic> json) =>
-      _$BookmarkSumOrderByAggregateInputFromJson(json);
-
-  final SortOrder? id;
-
-  @override
-  Map<String, dynamic> toJson() =>
-      _$BookmarkSumOrderByAggregateInputToJson(this);
-}
-
-@_i1.jsonSerializable
-class IntWithAggregatesFilter implements _i1.JsonSerializable {
-  const IntWithAggregatesFilter({
-    this.equals,
-    this.$in,
-    this.notIn,
-    this.lt,
-    this.lte,
-    this.gt,
-    this.gte,
-    this.not,
-    this.$count,
-    this.$avg,
-    this.$sum,
-    this.$min,
-    this.$max,
-  });
-
-  factory IntWithAggregatesFilter.fromJson(Map<String, dynamic> json) =>
-      _$IntWithAggregatesFilterFromJson(json);
-
-  final int? equals;
-
-  @JsonKey(name: r'in')
-  final Iterable<int>? $in;
-
-  final Iterable<int>? notIn;
-
-  final int? lt;
-
-  final int? lte;
-
-  final int? gt;
-
-  final int? gte;
-
-  final NestedIntWithAggregatesFilter? not;
-
-  @JsonKey(name: r'_count')
-  final NestedIntFilter? $count;
-
-  @JsonKey(name: r'_avg')
-  final NestedFloatFilter? $avg;
-
-  @JsonKey(name: r'_sum')
-  final NestedIntFilter? $sum;
-
-  @JsonKey(name: r'_min')
-  final NestedIntFilter? $min;
-
-  @JsonKey(name: r'_max')
-  final NestedIntFilter? $max;
-
-  @override
-  Map<String, dynamic> toJson() => _$IntWithAggregatesFilterToJson(this);
 }
 
 @_i1.jsonSerializable
@@ -643,70 +472,6 @@ class StringFieldUpdateOperationsInput implements _i1.JsonSerializable {
 }
 
 @_i1.jsonSerializable
-class IntFieldUpdateOperationsInput implements _i1.JsonSerializable {
-  const IntFieldUpdateOperationsInput({
-    this.set,
-    this.increment,
-    this.decrement,
-    this.multiply,
-    this.divide,
-  });
-
-  factory IntFieldUpdateOperationsInput.fromJson(Map<String, dynamic> json) =>
-      _$IntFieldUpdateOperationsInputFromJson(json);
-
-  final int? set;
-
-  final int? increment;
-
-  final int? decrement;
-
-  final int? multiply;
-
-  final int? divide;
-
-  @override
-  Map<String, dynamic> toJson() => _$IntFieldUpdateOperationsInputToJson(this);
-}
-
-@_i1.jsonSerializable
-class NestedIntFilter implements _i1.JsonSerializable {
-  const NestedIntFilter({
-    this.equals,
-    this.$in,
-    this.notIn,
-    this.lt,
-    this.lte,
-    this.gt,
-    this.gte,
-    this.not,
-  });
-
-  factory NestedIntFilter.fromJson(Map<String, dynamic> json) =>
-      _$NestedIntFilterFromJson(json);
-
-  final int? equals;
-
-  @JsonKey(name: r'in')
-  final Iterable<int>? $in;
-
-  final Iterable<int>? notIn;
-
-  final int? lt;
-
-  final int? lte;
-
-  final int? gt;
-
-  final int? gte;
-
-  final NestedIntFilter? not;
-
-  @override
-  Map<String, dynamic> toJson() => _$NestedIntFilterToJson(this);
-}
-
-@_i1.jsonSerializable
 class NestedStringFilter implements _i1.JsonSerializable {
   const NestedStringFilter({
     this.equals,
@@ -750,100 +515,6 @@ class NestedStringFilter implements _i1.JsonSerializable {
 
   @override
   Map<String, dynamic> toJson() => _$NestedStringFilterToJson(this);
-}
-
-@_i1.jsonSerializable
-class NestedIntWithAggregatesFilter implements _i1.JsonSerializable {
-  const NestedIntWithAggregatesFilter({
-    this.equals,
-    this.$in,
-    this.notIn,
-    this.lt,
-    this.lte,
-    this.gt,
-    this.gte,
-    this.not,
-    this.$count,
-    this.$avg,
-    this.$sum,
-    this.$min,
-    this.$max,
-  });
-
-  factory NestedIntWithAggregatesFilter.fromJson(Map<String, dynamic> json) =>
-      _$NestedIntWithAggregatesFilterFromJson(json);
-
-  final int? equals;
-
-  @JsonKey(name: r'in')
-  final Iterable<int>? $in;
-
-  final Iterable<int>? notIn;
-
-  final int? lt;
-
-  final int? lte;
-
-  final int? gt;
-
-  final int? gte;
-
-  final NestedIntWithAggregatesFilter? not;
-
-  @JsonKey(name: r'_count')
-  final NestedIntFilter? $count;
-
-  @JsonKey(name: r'_avg')
-  final NestedFloatFilter? $avg;
-
-  @JsonKey(name: r'_sum')
-  final NestedIntFilter? $sum;
-
-  @JsonKey(name: r'_min')
-  final NestedIntFilter? $min;
-
-  @JsonKey(name: r'_max')
-  final NestedIntFilter? $max;
-
-  @override
-  Map<String, dynamic> toJson() => _$NestedIntWithAggregatesFilterToJson(this);
-}
-
-@_i1.jsonSerializable
-class NestedFloatFilter implements _i1.JsonSerializable {
-  const NestedFloatFilter({
-    this.equals,
-    this.$in,
-    this.notIn,
-    this.lt,
-    this.lte,
-    this.gt,
-    this.gte,
-    this.not,
-  });
-
-  factory NestedFloatFilter.fromJson(Map<String, dynamic> json) =>
-      _$NestedFloatFilterFromJson(json);
-
-  final double? equals;
-
-  @JsonKey(name: r'in')
-  final Iterable<double>? $in;
-
-  final Iterable<double>? notIn;
-
-  final double? lt;
-
-  final double? lte;
-
-  final double? gt;
-
-  final double? gte;
-
-  final NestedFloatFilter? not;
-
-  @override
-  Map<String, dynamic> toJson() => _$NestedFloatFilterToJson(this);
 }
 
 @_i1.jsonSerializable
@@ -907,17 +578,51 @@ class NestedStringWithAggregatesFilter implements _i1.JsonSerializable {
 }
 
 @_i1.jsonSerializable
+class NestedIntFilter implements _i1.JsonSerializable {
+  const NestedIntFilter({
+    this.equals,
+    this.$in,
+    this.notIn,
+    this.lt,
+    this.lte,
+    this.gt,
+    this.gte,
+    this.not,
+  });
+
+  factory NestedIntFilter.fromJson(Map<String, dynamic> json) =>
+      _$NestedIntFilterFromJson(json);
+
+  final int? equals;
+
+  @JsonKey(name: r'in')
+  final Iterable<int>? $in;
+
+  final Iterable<int>? notIn;
+
+  final int? lt;
+
+  final int? lte;
+
+  final int? gt;
+
+  final int? gte;
+
+  final NestedIntFilter? not;
+
+  @override
+  Map<String, dynamic> toJson() => _$NestedIntFilterToJson(this);
+}
+
+@_i1.jsonSerializable
 class Bookmark implements _i1.JsonSerializable {
   const Bookmark({
-    required this.id,
     required this.caption,
     required this.url,
   });
 
   factory Bookmark.fromJson(Map<String, dynamic> json) =>
       _$BookmarkFromJson(json);
-
-  final int id;
 
   final String caption;
 
@@ -1466,15 +1171,12 @@ extension BookmarkModelDelegateExtension on _i1.ModelDelegate<Bookmark> {
 @_i1.jsonSerializable
 class BookmarkGroupByOutputType implements _i1.JsonSerializable {
   const BookmarkGroupByOutputType({
-    this.id,
     this.caption,
     this.url,
   });
 
   factory BookmarkGroupByOutputType.fromJson(Map<String, dynamic> json) =>
       _$BookmarkGroupByOutputTypeFromJson(json);
-
-  final int? id;
 
   final String? caption;
 
@@ -1515,32 +1217,6 @@ class AggregateBookmark {
     return BookmarkCountAggregateOutputType(query);
   }
 
-  BookmarkAvgAggregateOutputType $avg() {
-    final query = _i1.PrismaFluent.queryBuilder(
-      query: (fields) => $query([
-        _i2.GraphQLField(
-          r'_avg',
-          fields: fields,
-        )
-      ]),
-      key: r'_avg',
-    );
-    return BookmarkAvgAggregateOutputType(query);
-  }
-
-  BookmarkSumAggregateOutputType $sum() {
-    final query = _i1.PrismaFluent.queryBuilder(
-      query: (fields) => $query([
-        _i2.GraphQLField(
-          r'_sum',
-          fields: fields,
-        )
-      ]),
-      key: r'_sum',
-    );
-    return BookmarkSumAggregateOutputType(query);
-  }
-
   BookmarkMinAggregateOutputType $min() {
     final query = _i1.PrismaFluent.queryBuilder(
       query: (fields) => $query([
@@ -1572,19 +1248,6 @@ class BookmarkCountAggregateOutputType {
   const BookmarkCountAggregateOutputType(this.$query);
 
   final _i1.PrismaFluentQuery $query;
-
-  Future<int> id() {
-    final query = _i1.PrismaFluent.queryBuilder(
-      query: (fields) => $query([
-        _i2.GraphQLField(
-          r'id',
-          fields: fields,
-        )
-      ]),
-      key: r'id',
-    );
-    return query(const []).then((value) => (value as int));
-  }
 
   Future<int> caption() {
     final query = _i1.PrismaFluent.queryBuilder(
@@ -1626,61 +1289,10 @@ class BookmarkCountAggregateOutputType {
   }
 }
 
-class BookmarkAvgAggregateOutputType {
-  const BookmarkAvgAggregateOutputType(this.$query);
-
-  final _i1.PrismaFluentQuery $query;
-
-  Future<double?> id() {
-    final query = _i1.PrismaFluent.queryBuilder(
-      query: (fields) => $query([
-        _i2.GraphQLField(
-          r'id',
-          fields: fields,
-        )
-      ]),
-      key: r'id',
-    );
-    return query(const []).then((value) => (value as double?));
-  }
-}
-
-class BookmarkSumAggregateOutputType {
-  const BookmarkSumAggregateOutputType(this.$query);
-
-  final _i1.PrismaFluentQuery $query;
-
-  Future<int?> id() {
-    final query = _i1.PrismaFluent.queryBuilder(
-      query: (fields) => $query([
-        _i2.GraphQLField(
-          r'id',
-          fields: fields,
-        )
-      ]),
-      key: r'id',
-    );
-    return query(const []).then((value) => (value as int?));
-  }
-}
-
 class BookmarkMinAggregateOutputType {
   const BookmarkMinAggregateOutputType(this.$query);
 
   final _i1.PrismaFluentQuery $query;
-
-  Future<int?> id() {
-    final query = _i1.PrismaFluent.queryBuilder(
-      query: (fields) => $query([
-        _i2.GraphQLField(
-          r'id',
-          fields: fields,
-        )
-      ]),
-      key: r'id',
-    );
-    return query(const []).then((value) => (value as int?));
-  }
 
   Future<String?> caption() {
     final query = _i1.PrismaFluent.queryBuilder(
@@ -1713,19 +1325,6 @@ class BookmarkMaxAggregateOutputType {
   const BookmarkMaxAggregateOutputType(this.$query);
 
   final _i1.PrismaFluentQuery $query;
-
-  Future<int?> id() {
-    final query = _i1.PrismaFluent.queryBuilder(
-      query: (fields) => $query([
-        _i2.GraphQLField(
-          r'id',
-          fields: fields,
-        )
-      ]),
-      key: r'id',
-    );
-    return query(const []).then((value) => (value as int?));
-  }
 
   Future<String?> caption() {
     final query = _i1.PrismaFluent.queryBuilder(
@@ -1794,7 +1393,7 @@ class PrismaClient extends _i1.BasePrismaClient<PrismaClient> {
     final engine = _i5.BinaryEngine(
       logger: logger,
       schema:
-          r'Ly8gVGhpcyBpcyB5b3VyIFByaXNtYSBzY2hlbWEgZmlsZSwKLy8gbGVhcm4gbW9yZSBhYm91dCBpdCBpbiB0aGUgZG9jczogaHR0cHM6Ly9wcmlzLmx5L2QvcHJpc21hLXNjaGVtYQoKZ2VuZXJhdG9yIGNsaWVudCB7CiAgcHJvdmlkZXIgPSAiZGFydCBydW4gb3JtIgp9CgpkYXRhc291cmNlIGRiIHsKICBwcm92aWRlciA9ICJwb3N0Z3Jlc3FsIgogIHVybCAgICAgID0gZW52KCJEQVRBQkFTRV9VUkwiKQp9Cgptb2RlbCBCb29rbWFyayB7CiAgaWQgICAgICBJbnQgICAgQGlkIEBkZWZhdWx0KGF1dG9pbmNyZW1lbnQoKSkKICBjYXB0aW9uIFN0cmluZwogIHVybCAgICAgU3RyaW5nIEB1bmlxdWUKCiAgQEBtYXAoImJvb2ttYXJrcyIpCn0K',
+          r'Ly8gVGhpcyBpcyB5b3VyIFByaXNtYSBzY2hlbWEgZmlsZSwKLy8gbGVhcm4gbW9yZSBhYm91dCBpdCBpbiB0aGUgZG9jczogaHR0cHM6Ly9wcmlzLmx5L2QvcHJpc21hLXNjaGVtYQoKZ2VuZXJhdG9yIGNsaWVudCB7CiAgcHJvdmlkZXIgPSAiZGFydCBydW4gb3JtIgp9CgpkYXRhc291cmNlIGRiIHsKICBwcm92aWRlciA9ICJwb3N0Z3Jlc3FsIgogIHVybCAgICAgID0gZW52KCJEQVRBQkFTRV9VUkwiKQp9Cgptb2RlbCBCb29rbWFyayB7CiAgY2FwdGlvbiBTdHJpbmcKICB1cmwgICAgIFN0cmluZyBAdW5pcXVlCgogIEBAbWFwKCJib29rbWFya3MiKQp9Cg==',
       datasources: datasources?.toJson().cast() ?? const {},
       executable:
           r'C:\Users\umeza\AppData\Roaming\npm\node_modules\prisma\query-engine-windows.exe',

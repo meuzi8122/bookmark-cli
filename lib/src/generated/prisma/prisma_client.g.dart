@@ -14,9 +14,6 @@ BookmarkWhereInput _$BookmarkWhereInputFromJson(Map<String, dynamic> json) =>
           ?.map((e) => BookmarkWhereInput.fromJson(e as Map<String, dynamic>)),
       NOT: (json['NOT'] as List<dynamic>?)
           ?.map((e) => BookmarkWhereInput.fromJson(e as Map<String, dynamic>)),
-      id: json['id'] == null
-          ? null
-          : IntFilter.fromJson(json['id'] as Map<String, dynamic>),
       caption: json['caption'] == null
           ? null
           : StringFilter.fromJson(json['caption'] as Map<String, dynamic>),
@@ -37,7 +34,6 @@ Map<String, dynamic> _$BookmarkWhereInputToJson(BookmarkWhereInput instance) {
   writeNotNull('AND', instance.AND?.map((e) => e.toJson()).toList());
   writeNotNull('OR', instance.OR?.map((e) => e.toJson()).toList());
   writeNotNull('NOT', instance.NOT?.map((e) => e.toJson()).toList());
-  writeNotNull('id', instance.id?.toJson());
   writeNotNull('caption', instance.caption?.toJson());
   writeNotNull('url', instance.url?.toJson());
   return val;
@@ -46,7 +42,6 @@ Map<String, dynamic> _$BookmarkWhereInputToJson(BookmarkWhereInput instance) {
 BookmarkOrderByWithRelationInput _$BookmarkOrderByWithRelationInputFromJson(
         Map<String, dynamic> json) =>
     BookmarkOrderByWithRelationInput(
-      id: $enumDecodeNullable(_$SortOrderEnumMap, json['id']),
       caption: $enumDecodeNullable(_$SortOrderEnumMap, json['caption']),
       url: $enumDecodeNullable(_$SortOrderEnumMap, json['url']),
     );
@@ -61,7 +56,6 @@ Map<String, dynamic> _$BookmarkOrderByWithRelationInputToJson(
     }
   }
 
-  writeNotNull('id', _$SortOrderEnumMap[instance.id]);
   writeNotNull('caption', _$SortOrderEnumMap[instance.caption]);
   writeNotNull('url', _$SortOrderEnumMap[instance.url]);
   return val;
@@ -75,7 +69,6 @@ const _$SortOrderEnumMap = {
 BookmarkWhereUniqueInput _$BookmarkWhereUniqueInputFromJson(
         Map<String, dynamic> json) =>
     BookmarkWhereUniqueInput(
-      id: json['id'] as int?,
       url: json['url'] as String?,
     );
 
@@ -89,7 +82,6 @@ Map<String, dynamic> _$BookmarkWhereUniqueInputToJson(
     }
   }
 
-  writeNotNull('id', instance.id);
   writeNotNull('url', instance.url);
   return val;
 }
@@ -97,17 +89,12 @@ Map<String, dynamic> _$BookmarkWhereUniqueInputToJson(
 BookmarkOrderByWithAggregationInput
     _$BookmarkOrderByWithAggregationInputFromJson(Map<String, dynamic> json) =>
         BookmarkOrderByWithAggregationInput(
-          id: $enumDecodeNullable(_$SortOrderEnumMap, json['id']),
           caption: $enumDecodeNullable(_$SortOrderEnumMap, json['caption']),
           url: $enumDecodeNullable(_$SortOrderEnumMap, json['url']),
           $count: json['_count'] == null
               ? null
               : BookmarkCountOrderByAggregateInput.fromJson(
                   json['_count'] as Map<String, dynamic>),
-          $avg: json['_avg'] == null
-              ? null
-              : BookmarkAvgOrderByAggregateInput.fromJson(
-                  json['_avg'] as Map<String, dynamic>),
           $max: json['_max'] == null
               ? null
               : BookmarkMaxOrderByAggregateInput.fromJson(
@@ -116,10 +103,6 @@ BookmarkOrderByWithAggregationInput
               ? null
               : BookmarkMinOrderByAggregateInput.fromJson(
                   json['_min'] as Map<String, dynamic>),
-          $sum: json['_sum'] == null
-              ? null
-              : BookmarkSumOrderByAggregateInput.fromJson(
-                  json['_sum'] as Map<String, dynamic>),
         );
 
 Map<String, dynamic> _$BookmarkOrderByWithAggregationInputToJson(
@@ -132,14 +115,11 @@ Map<String, dynamic> _$BookmarkOrderByWithAggregationInputToJson(
     }
   }
 
-  writeNotNull('id', _$SortOrderEnumMap[instance.id]);
   writeNotNull('caption', _$SortOrderEnumMap[instance.caption]);
   writeNotNull('url', _$SortOrderEnumMap[instance.url]);
   writeNotNull('_count', instance.$count?.toJson());
-  writeNotNull('_avg', instance.$avg?.toJson());
   writeNotNull('_max', instance.$max?.toJson());
   writeNotNull('_min', instance.$min?.toJson());
-  writeNotNull('_sum', instance.$sum?.toJson());
   return val;
 }
 
@@ -156,10 +136,6 @@ BookmarkScalarWhereWithAggregatesInput
           NOT: (json['NOT'] as List<dynamic>?)?.map((e) =>
               BookmarkScalarWhereWithAggregatesInput.fromJson(
                   e as Map<String, dynamic>)),
-          id: json['id'] == null
-              ? null
-              : IntWithAggregatesFilter.fromJson(
-                  json['id'] as Map<String, dynamic>),
           caption: json['caption'] == null
               ? null
               : StringWithAggregatesFilter.fromJson(
@@ -183,7 +159,6 @@ Map<String, dynamic> _$BookmarkScalarWhereWithAggregatesInputToJson(
   writeNotNull('AND', instance.AND?.map((e) => e.toJson()).toList());
   writeNotNull('OR', instance.OR?.map((e) => e.toJson()).toList());
   writeNotNull('NOT', instance.NOT?.map((e) => e.toJson()).toList());
-  writeNotNull('id', instance.id?.toJson());
   writeNotNull('caption', instance.caption?.toJson());
   writeNotNull('url', instance.url?.toJson());
   return val;
@@ -205,26 +180,16 @@ Map<String, dynamic> _$BookmarkCreateInputToJson(
 BookmarkUncheckedCreateInput _$BookmarkUncheckedCreateInputFromJson(
         Map<String, dynamic> json) =>
     BookmarkUncheckedCreateInput(
-      id: json['id'] as int?,
       caption: json['caption'] as String,
       url: json['url'] as String,
     );
 
 Map<String, dynamic> _$BookmarkUncheckedCreateInputToJson(
-    BookmarkUncheckedCreateInput instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  val['caption'] = instance.caption;
-  val['url'] = instance.url;
-  return val;
-}
+        BookmarkUncheckedCreateInput instance) =>
+    <String, dynamic>{
+      'caption': instance.caption,
+      'url': instance.url,
+    };
 
 BookmarkUpdateInput _$BookmarkUpdateInputFromJson(Map<String, dynamic> json) =>
     BookmarkUpdateInput(
@@ -255,10 +220,6 @@ Map<String, dynamic> _$BookmarkUpdateInputToJson(BookmarkUpdateInput instance) {
 BookmarkUncheckedUpdateInput _$BookmarkUncheckedUpdateInputFromJson(
         Map<String, dynamic> json) =>
     BookmarkUncheckedUpdateInput(
-      id: json['id'] == null
-          ? null
-          : IntFieldUpdateOperationsInput.fromJson(
-              json['id'] as Map<String, dynamic>),
       caption: json['caption'] == null
           ? null
           : StringFieldUpdateOperationsInput.fromJson(
@@ -279,7 +240,6 @@ Map<String, dynamic> _$BookmarkUncheckedUpdateInputToJson(
     }
   }
 
-  writeNotNull('id', instance.id?.toJson());
   writeNotNull('caption', instance.caption?.toJson());
   writeNotNull('url', instance.url?.toJson());
   return val;
@@ -288,26 +248,16 @@ Map<String, dynamic> _$BookmarkUncheckedUpdateInputToJson(
 BookmarkCreateManyInput _$BookmarkCreateManyInputFromJson(
         Map<String, dynamic> json) =>
     BookmarkCreateManyInput(
-      id: json['id'] as int?,
       caption: json['caption'] as String,
       url: json['url'] as String,
     );
 
 Map<String, dynamic> _$BookmarkCreateManyInputToJson(
-    BookmarkCreateManyInput instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  val['caption'] = instance.caption;
-  val['url'] = instance.url;
-  return val;
-}
+        BookmarkCreateManyInput instance) =>
+    <String, dynamic>{
+      'caption': instance.caption,
+      'url': instance.url,
+    };
 
 BookmarkUpdateManyMutationInput _$BookmarkUpdateManyMutationInputFromJson(
         Map<String, dynamic> json) =>
@@ -340,10 +290,6 @@ Map<String, dynamic> _$BookmarkUpdateManyMutationInputToJson(
 BookmarkUncheckedUpdateManyInput _$BookmarkUncheckedUpdateManyInputFromJson(
         Map<String, dynamic> json) =>
     BookmarkUncheckedUpdateManyInput(
-      id: json['id'] == null
-          ? null
-          : IntFieldUpdateOperationsInput.fromJson(
-              json['id'] as Map<String, dynamic>),
       caption: json['caption'] == null
           ? null
           : StringFieldUpdateOperationsInput.fromJson(
@@ -364,42 +310,8 @@ Map<String, dynamic> _$BookmarkUncheckedUpdateManyInputToJson(
     }
   }
 
-  writeNotNull('id', instance.id?.toJson());
   writeNotNull('caption', instance.caption?.toJson());
   writeNotNull('url', instance.url?.toJson());
-  return val;
-}
-
-IntFilter _$IntFilterFromJson(Map<String, dynamic> json) => IntFilter(
-      equals: json['equals'] as int?,
-      $in: (json['in'] as List<dynamic>?)?.map((e) => e as int),
-      notIn: (json['notIn'] as List<dynamic>?)?.map((e) => e as int),
-      lt: json['lt'] as int?,
-      lte: json['lte'] as int?,
-      gt: json['gt'] as int?,
-      gte: json['gte'] as int?,
-      not: json['not'] == null
-          ? null
-          : NestedIntFilter.fromJson(json['not'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$IntFilterToJson(IntFilter instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('equals', instance.equals);
-  writeNotNull('in', instance.$in?.toList());
-  writeNotNull('notIn', instance.notIn?.toList());
-  writeNotNull('lt', instance.lt);
-  writeNotNull('lte', instance.lte);
-  writeNotNull('gt', instance.gt);
-  writeNotNull('gte', instance.gte);
-  writeNotNull('not', instance.not?.toJson());
   return val;
 }
 
@@ -452,7 +364,6 @@ const _$QueryModeEnumMap = {
 BookmarkCountOrderByAggregateInput _$BookmarkCountOrderByAggregateInputFromJson(
         Map<String, dynamic> json) =>
     BookmarkCountOrderByAggregateInput(
-      id: $enumDecodeNullable(_$SortOrderEnumMap, json['id']),
       caption: $enumDecodeNullable(_$SortOrderEnumMap, json['caption']),
       url: $enumDecodeNullable(_$SortOrderEnumMap, json['url']),
     );
@@ -467,36 +378,14 @@ Map<String, dynamic> _$BookmarkCountOrderByAggregateInputToJson(
     }
   }
 
-  writeNotNull('id', _$SortOrderEnumMap[instance.id]);
   writeNotNull('caption', _$SortOrderEnumMap[instance.caption]);
   writeNotNull('url', _$SortOrderEnumMap[instance.url]);
-  return val;
-}
-
-BookmarkAvgOrderByAggregateInput _$BookmarkAvgOrderByAggregateInputFromJson(
-        Map<String, dynamic> json) =>
-    BookmarkAvgOrderByAggregateInput(
-      id: $enumDecodeNullable(_$SortOrderEnumMap, json['id']),
-    );
-
-Map<String, dynamic> _$BookmarkAvgOrderByAggregateInputToJson(
-    BookmarkAvgOrderByAggregateInput instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', _$SortOrderEnumMap[instance.id]);
   return val;
 }
 
 BookmarkMaxOrderByAggregateInput _$BookmarkMaxOrderByAggregateInputFromJson(
         Map<String, dynamic> json) =>
     BookmarkMaxOrderByAggregateInput(
-      id: $enumDecodeNullable(_$SortOrderEnumMap, json['id']),
       caption: $enumDecodeNullable(_$SortOrderEnumMap, json['caption']),
       url: $enumDecodeNullable(_$SortOrderEnumMap, json['url']),
     );
@@ -511,7 +400,6 @@ Map<String, dynamic> _$BookmarkMaxOrderByAggregateInputToJson(
     }
   }
 
-  writeNotNull('id', _$SortOrderEnumMap[instance.id]);
   writeNotNull('caption', _$SortOrderEnumMap[instance.caption]);
   writeNotNull('url', _$SortOrderEnumMap[instance.url]);
   return val;
@@ -520,7 +408,6 @@ Map<String, dynamic> _$BookmarkMaxOrderByAggregateInputToJson(
 BookmarkMinOrderByAggregateInput _$BookmarkMinOrderByAggregateInputFromJson(
         Map<String, dynamic> json) =>
     BookmarkMinOrderByAggregateInput(
-      id: $enumDecodeNullable(_$SortOrderEnumMap, json['id']),
       caption: $enumDecodeNullable(_$SortOrderEnumMap, json['caption']),
       url: $enumDecodeNullable(_$SortOrderEnumMap, json['url']),
     );
@@ -535,86 +422,8 @@ Map<String, dynamic> _$BookmarkMinOrderByAggregateInputToJson(
     }
   }
 
-  writeNotNull('id', _$SortOrderEnumMap[instance.id]);
   writeNotNull('caption', _$SortOrderEnumMap[instance.caption]);
   writeNotNull('url', _$SortOrderEnumMap[instance.url]);
-  return val;
-}
-
-BookmarkSumOrderByAggregateInput _$BookmarkSumOrderByAggregateInputFromJson(
-        Map<String, dynamic> json) =>
-    BookmarkSumOrderByAggregateInput(
-      id: $enumDecodeNullable(_$SortOrderEnumMap, json['id']),
-    );
-
-Map<String, dynamic> _$BookmarkSumOrderByAggregateInputToJson(
-    BookmarkSumOrderByAggregateInput instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', _$SortOrderEnumMap[instance.id]);
-  return val;
-}
-
-IntWithAggregatesFilter _$IntWithAggregatesFilterFromJson(
-        Map<String, dynamic> json) =>
-    IntWithAggregatesFilter(
-      equals: json['equals'] as int?,
-      $in: (json['in'] as List<dynamic>?)?.map((e) => e as int),
-      notIn: (json['notIn'] as List<dynamic>?)?.map((e) => e as int),
-      lt: json['lt'] as int?,
-      lte: json['lte'] as int?,
-      gt: json['gt'] as int?,
-      gte: json['gte'] as int?,
-      not: json['not'] == null
-          ? null
-          : NestedIntWithAggregatesFilter.fromJson(
-              json['not'] as Map<String, dynamic>),
-      $count: json['_count'] == null
-          ? null
-          : NestedIntFilter.fromJson(json['_count'] as Map<String, dynamic>),
-      $avg: json['_avg'] == null
-          ? null
-          : NestedFloatFilter.fromJson(json['_avg'] as Map<String, dynamic>),
-      $sum: json['_sum'] == null
-          ? null
-          : NestedIntFilter.fromJson(json['_sum'] as Map<String, dynamic>),
-      $min: json['_min'] == null
-          ? null
-          : NestedIntFilter.fromJson(json['_min'] as Map<String, dynamic>),
-      $max: json['_max'] == null
-          ? null
-          : NestedIntFilter.fromJson(json['_max'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$IntWithAggregatesFilterToJson(
-    IntWithAggregatesFilter instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('equals', instance.equals);
-  writeNotNull('in', instance.$in?.toList());
-  writeNotNull('notIn', instance.notIn?.toList());
-  writeNotNull('lt', instance.lt);
-  writeNotNull('lte', instance.lte);
-  writeNotNull('gt', instance.gt);
-  writeNotNull('gte', instance.gte);
-  writeNotNull('not', instance.not?.toJson());
-  writeNotNull('_count', instance.$count?.toJson());
-  writeNotNull('_avg', instance.$avg?.toJson());
-  writeNotNull('_sum', instance.$sum?.toJson());
-  writeNotNull('_min', instance.$min?.toJson());
-  writeNotNull('_max', instance.$max?.toJson());
   return val;
 }
 
@@ -695,68 +504,6 @@ Map<String, dynamic> _$StringFieldUpdateOperationsInputToJson(
   return val;
 }
 
-IntFieldUpdateOperationsInput _$IntFieldUpdateOperationsInputFromJson(
-        Map<String, dynamic> json) =>
-    IntFieldUpdateOperationsInput(
-      set: json['set'] as int?,
-      increment: json['increment'] as int?,
-      decrement: json['decrement'] as int?,
-      multiply: json['multiply'] as int?,
-      divide: json['divide'] as int?,
-    );
-
-Map<String, dynamic> _$IntFieldUpdateOperationsInputToJson(
-    IntFieldUpdateOperationsInput instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('set', instance.set);
-  writeNotNull('increment', instance.increment);
-  writeNotNull('decrement', instance.decrement);
-  writeNotNull('multiply', instance.multiply);
-  writeNotNull('divide', instance.divide);
-  return val;
-}
-
-NestedIntFilter _$NestedIntFilterFromJson(Map<String, dynamic> json) =>
-    NestedIntFilter(
-      equals: json['equals'] as int?,
-      $in: (json['in'] as List<dynamic>?)?.map((e) => e as int),
-      notIn: (json['notIn'] as List<dynamic>?)?.map((e) => e as int),
-      lt: json['lt'] as int?,
-      lte: json['lte'] as int?,
-      gt: json['gt'] as int?,
-      gte: json['gte'] as int?,
-      not: json['not'] == null
-          ? null
-          : NestedIntFilter.fromJson(json['not'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$NestedIntFilterToJson(NestedIntFilter instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('equals', instance.equals);
-  writeNotNull('in', instance.$in?.toList());
-  writeNotNull('notIn', instance.notIn?.toList());
-  writeNotNull('lt', instance.lt);
-  writeNotNull('lte', instance.lte);
-  writeNotNull('gt', instance.gt);
-  writeNotNull('gte', instance.gte);
-  writeNotNull('not', instance.not?.toJson());
-  return val;
-}
-
 NestedStringFilter _$NestedStringFilterFromJson(Map<String, dynamic> json) =>
     NestedStringFilter(
       equals: json['equals'] as String?,
@@ -793,98 +540,6 @@ Map<String, dynamic> _$NestedStringFilterToJson(NestedStringFilter instance) {
   writeNotNull('contains', instance.contains);
   writeNotNull('startsWith', instance.startsWith);
   writeNotNull('endsWith', instance.endsWith);
-  writeNotNull('not', instance.not?.toJson());
-  return val;
-}
-
-NestedIntWithAggregatesFilter _$NestedIntWithAggregatesFilterFromJson(
-        Map<String, dynamic> json) =>
-    NestedIntWithAggregatesFilter(
-      equals: json['equals'] as int?,
-      $in: (json['in'] as List<dynamic>?)?.map((e) => e as int),
-      notIn: (json['notIn'] as List<dynamic>?)?.map((e) => e as int),
-      lt: json['lt'] as int?,
-      lte: json['lte'] as int?,
-      gt: json['gt'] as int?,
-      gte: json['gte'] as int?,
-      not: json['not'] == null
-          ? null
-          : NestedIntWithAggregatesFilter.fromJson(
-              json['not'] as Map<String, dynamic>),
-      $count: json['_count'] == null
-          ? null
-          : NestedIntFilter.fromJson(json['_count'] as Map<String, dynamic>),
-      $avg: json['_avg'] == null
-          ? null
-          : NestedFloatFilter.fromJson(json['_avg'] as Map<String, dynamic>),
-      $sum: json['_sum'] == null
-          ? null
-          : NestedIntFilter.fromJson(json['_sum'] as Map<String, dynamic>),
-      $min: json['_min'] == null
-          ? null
-          : NestedIntFilter.fromJson(json['_min'] as Map<String, dynamic>),
-      $max: json['_max'] == null
-          ? null
-          : NestedIntFilter.fromJson(json['_max'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$NestedIntWithAggregatesFilterToJson(
-    NestedIntWithAggregatesFilter instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('equals', instance.equals);
-  writeNotNull('in', instance.$in?.toList());
-  writeNotNull('notIn', instance.notIn?.toList());
-  writeNotNull('lt', instance.lt);
-  writeNotNull('lte', instance.lte);
-  writeNotNull('gt', instance.gt);
-  writeNotNull('gte', instance.gte);
-  writeNotNull('not', instance.not?.toJson());
-  writeNotNull('_count', instance.$count?.toJson());
-  writeNotNull('_avg', instance.$avg?.toJson());
-  writeNotNull('_sum', instance.$sum?.toJson());
-  writeNotNull('_min', instance.$min?.toJson());
-  writeNotNull('_max', instance.$max?.toJson());
-  return val;
-}
-
-NestedFloatFilter _$NestedFloatFilterFromJson(Map<String, dynamic> json) =>
-    NestedFloatFilter(
-      equals: (json['equals'] as num?)?.toDouble(),
-      $in: (json['in'] as List<dynamic>?)?.map((e) => (e as num).toDouble()),
-      notIn:
-          (json['notIn'] as List<dynamic>?)?.map((e) => (e as num).toDouble()),
-      lt: (json['lt'] as num?)?.toDouble(),
-      lte: (json['lte'] as num?)?.toDouble(),
-      gt: (json['gt'] as num?)?.toDouble(),
-      gte: (json['gte'] as num?)?.toDouble(),
-      not: json['not'] == null
-          ? null
-          : NestedFloatFilter.fromJson(json['not'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$NestedFloatFilterToJson(NestedFloatFilter instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('equals', instance.equals);
-  writeNotNull('in', instance.$in?.toList());
-  writeNotNull('notIn', instance.notIn?.toList());
-  writeNotNull('lt', instance.lt);
-  writeNotNull('lte', instance.lte);
-  writeNotNull('gt', instance.gt);
-  writeNotNull('gte', instance.gte);
   writeNotNull('not', instance.not?.toJson());
   return val;
 }
@@ -944,14 +599,46 @@ Map<String, dynamic> _$NestedStringWithAggregatesFilterToJson(
   return val;
 }
 
+NestedIntFilter _$NestedIntFilterFromJson(Map<String, dynamic> json) =>
+    NestedIntFilter(
+      equals: json['equals'] as int?,
+      $in: (json['in'] as List<dynamic>?)?.map((e) => e as int),
+      notIn: (json['notIn'] as List<dynamic>?)?.map((e) => e as int),
+      lt: json['lt'] as int?,
+      lte: json['lte'] as int?,
+      gt: json['gt'] as int?,
+      gte: json['gte'] as int?,
+      not: json['not'] == null
+          ? null
+          : NestedIntFilter.fromJson(json['not'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$NestedIntFilterToJson(NestedIntFilter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('equals', instance.equals);
+  writeNotNull('in', instance.$in?.toList());
+  writeNotNull('notIn', instance.notIn?.toList());
+  writeNotNull('lt', instance.lt);
+  writeNotNull('lte', instance.lte);
+  writeNotNull('gt', instance.gt);
+  writeNotNull('gte', instance.gte);
+  writeNotNull('not', instance.not?.toJson());
+  return val;
+}
+
 Bookmark _$BookmarkFromJson(Map<String, dynamic> json) => Bookmark(
-      id: json['id'] as int,
       caption: json['caption'] as String,
       url: json['url'] as String,
     );
 
 Map<String, dynamic> _$BookmarkToJson(Bookmark instance) => <String, dynamic>{
-      'id': instance.id,
       'caption': instance.caption,
       'url': instance.url,
     };
@@ -959,7 +646,6 @@ Map<String, dynamic> _$BookmarkToJson(Bookmark instance) => <String, dynamic>{
 BookmarkGroupByOutputType _$BookmarkGroupByOutputTypeFromJson(
         Map<String, dynamic> json) =>
     BookmarkGroupByOutputType(
-      id: json['id'] as int?,
       caption: json['caption'] as String?,
       url: json['url'] as String?,
     );
@@ -974,7 +660,6 @@ Map<String, dynamic> _$BookmarkGroupByOutputTypeToJson(
     }
   }
 
-  writeNotNull('id', instance.id);
   writeNotNull('caption', instance.caption);
   writeNotNull('url', instance.url);
   return val;

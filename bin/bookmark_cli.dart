@@ -1,6 +1,11 @@
 import 'package:bookmark_cli/bookmark_cli.dart';
 
 void main(List<String> arguments) {
+  if (arguments.length == 0) {
+    print('[ERROR] コマンドが指定されていません');
+    return;
+  }
+
   if (arguments[0] == 'list') {
     BookmarkCmd().findBookmarks(arguments.length > 1 ? arguments[1] : '');
   } else if (arguments[0] == 'upsert') {
