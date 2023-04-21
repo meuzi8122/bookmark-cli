@@ -6,3 +6,6 @@
 - npx prisma db push
 - npx prisma generate
 - dart run build_runner build
+
+## test
+- dart test test/bookmark_service_test.dart
