@@ -1,8 +1,8 @@
 import 'package:bookmark_cli/src/service/bookmark.dart';
 
 class BookmarkCmd {
-  Future<void> findBookmarks() async {
-    final bookmarks = await BookmarkService().findBookmarks();
+  Future<void> findBookmarks(String keyword) async {
+    final bookmarks = await BookmarkService().findBookmarks(keyword);
     bookmarks.forEach((bookmark) {
       print(bookmark.caption);
       print('${bookmark.url}\n');
@@ -17,7 +17,9 @@ class BookmarkCmd {
   }
 
   Future<void> deleteBookmark(String url) async {
-    await BookmarkService().deleteBookmark(url);
+    final bookmark = await BookmarkService().deleteBookmark(url);
     print('[INFO] ブックマークを削除しました');
+    print(bookmark?.caption);
+    print(bookmark?.url);
   }
 }
