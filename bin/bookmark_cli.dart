@@ -5,7 +5,17 @@ import 'package:bookmark_cli/bookmark_cli.dart';
 void main(List<String> arguments) async {
   if (arguments.length == 0) {
     print(
-        'コマンド一覧\n list   [キーワード]   説明文にキーワードを含むブックマーク一覧を表示(キーワードは省略可 その場合全件表示)\n upsert [説明文] [url] ブックマークを登録(登録済みのURLなら更新)\n delete [url]          ブックマークを削除');
+        '''
+        コマンド一覧
+        list [キーワード] 
+        説明文にキーワードを含むブックマーク一覧を表示(キーワードは省略可 その場合全件表示)
+        upsert [説明] [url]
+        ブックマークを登録(登録済みのURLなら更新)
+        delete [url]       
+        ブックマークを削除
+        export              
+        ブックマークをSlackに投稿(webhook)
+        ''');
     exit(0);
   }
 
@@ -23,6 +33,9 @@ void main(List<String> arguments) async {
       exit(1);
     }
     await BookmarkCmd().deleteBookmark(arguments[1]);
+  } else if (arguments[0] == 'export') {
+    final status = await BookmarkCmd().exportBookmarks();
+    exit(status);
   } else {
     print('[ERROR] コマンドが見つかりません');
     exit(1);

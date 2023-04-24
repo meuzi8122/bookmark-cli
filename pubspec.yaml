@@ -17,5 +17,6 @@ dev_dependencies:
   test: ^1.21.0
 dependencies:
   envied: ^0.3.0
+  http: ^0.13.5
   json_annotation: ^4.8.0
   orm: ^3.3.0

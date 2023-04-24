@@ -9,3 +9,10 @@
 
 ## test
 - dart test test/bookmark_service_test.dart
+
+## ループでasync-awaitを使う
+```
+await Future.forEach(bookmarks, (bookmark) async {
+    http.Response response = await http.post(...);
+});
+```
