@@ -1,5 +1,4 @@
 import 'package:bookmark_cli/src/client/slack.dart';
-import 'package:bookmark_cli/src/client/slack.g.dart';
 import 'package:bookmark_cli/src/service/bookmark.dart';
 
 class BookmarkCmd {

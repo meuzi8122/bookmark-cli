@@ -1,9 +1,10 @@
 import 'dart:convert';
 
 import 'package:bookmark_cli/env/env.dart';
-import 'package:bookmark_cli/src/client/slack.g.dart';
 import 'package:bookmark_cli/src/generated/prisma/prisma_client.dart';
 import 'package:http/http.dart' as http;
+
+enum Result { SUCCUSS, FAILURE }
 
 class SlackClient {
   Future<Result> exportBookmarks(Iterable<Bookmark> bookmarks) async {
