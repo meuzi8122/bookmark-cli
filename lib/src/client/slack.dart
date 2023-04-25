@@ -9,11 +9,12 @@ class SlackClient {
   Future<Result> exportBookmarks(Iterable<Bookmark> bookmarks) async {
     Uri url = Uri.parse(Env.slackWebhookUrl);
     Map<String, String> headers = {'content-type': 'application/json'};
-    String text = '';
-    bookmarks.forEach((bookmark) {
-      text += '${bookmark.caption}\n${bookmark.url}\n\n';
-    });
-    String body = json.encode({'text': text});
+
+    final Iterable<String> texts = [
+      for (var bookmark in bookmarks) '${bookmark.caption}\n${bookmark.url}'
+    ];
+
+    String body = json.encode({'text': texts.join('\n\n')});
     http.Response response = await http.post(url, headers: headers, body: body);
 
     return response.statusCode == 200 ? Result.SUCCUSS : Result.FAILURE;
